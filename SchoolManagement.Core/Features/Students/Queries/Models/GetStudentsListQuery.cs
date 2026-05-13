@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Data.Entities;
+﻿using SchoolManagement.Core.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;

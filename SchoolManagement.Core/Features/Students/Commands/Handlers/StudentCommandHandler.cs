@@ -2,9 +2,9 @@
 using MediatR;
 using Microsoft.Extensions.Localization;
 using SchoolManagement.Core.Bases;
+using SchoolManagement.Core.Entities;
 using SchoolManagement.Core.Features.Students.Commands.Models;
 using SchoolManagement.Core.SharedResources;
-using SchoolManagement.Data.Entities;
 using SchoolManagement.Service.Abstract;
 
 namespace SchoolManagement.Core.Features.Students.Commands.Handlers

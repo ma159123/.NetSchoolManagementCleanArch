@@ -1,5 +1,5 @@
-﻿using SchoolManagement.Data.Data;
-using SchoolManagement.Data.Entities;
+﻿using SchoolManagement.Core.Data;
+using SchoolManagement.Core.Entities;
 
 namespace SchoolManagement.Service.Abstract
 {

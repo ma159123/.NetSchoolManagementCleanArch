@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SchoolManagement.Core.Abstractions.service_abstract;
 using SchoolManagement.Service.Abstract;
 using SchoolManagement.Service.Impl;
 

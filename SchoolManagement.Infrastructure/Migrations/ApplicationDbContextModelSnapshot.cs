@@ -17,12 +17,145 @@ namespace SchoolManagement.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.5")
+                .HasAnnotation("ProductVersion", "10.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Department", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Department", b =>
                 {
                     b.Property<int>("DID")
                         .ValueGeneratedOnAdd()
@@ -47,7 +180,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.DepartmetSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.DepartmetSubject", b =>
                 {
                     b.Property<int>("DeptSubID")
                         .ValueGeneratedOnAdd()
@@ -70,7 +203,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("departmetSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Instructor", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Instructor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +241,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("Instructors");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.InstructorSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.InstructorSubject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,7 +264,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("InstructorSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Student", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Student", b =>
                 {
                     b.Property<int>("StudID")
                         .ValueGeneratedOnAdd()
@@ -164,7 +297,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("students");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.StudentSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.StudentSubject", b =>
                 {
                     b.Property<int>("StudSubID")
                         .ValueGeneratedOnAdd()
@@ -187,7 +320,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("studentSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Subject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Subject", b =>
                 {
                     b.Property<int>("SubID")
                         .ValueGeneratedOnAdd()
@@ -208,25 +341,144 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("subjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Department", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.identity.User", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Instructor", "Manager")
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("SchoolManagement.Core.Entities.identity.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("SchoolManagement.Core.Entities.identity.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Core.Entities.identity.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("SchoolManagement.Core.Entities.identity.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Department", b =>
+                {
+                    b.HasOne("SchoolManagement.Core.Entities.Instructor", "Manager")
                         .WithOne("ManagedDepatment")
-                        .HasForeignKey("SchoolManagement.Data.Entities.Department", "ManagerId")
+                        .HasForeignKey("SchoolManagement.Core.Entities.Department", "ManagerId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Manager");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.DepartmetSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.DepartmetSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Department", "Department")
+                    b.HasOne("SchoolManagement.Core.Entities.Department", "Department")
                         .WithMany("DepartmentSubjects")
                         .HasForeignKey("DID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Data.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Core.Entities.Subject", "Subject")
                         .WithMany("DepartmetsSubjects")
                         .HasForeignKey("SubID")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -237,15 +489,15 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Instructor", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Instructor", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Department", "Department")
+                    b.HasOne("SchoolManagement.Core.Entities.Department", "Department")
                         .WithMany("Instructors")
                         .HasForeignKey("DeptId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Data.Entities.Instructor", "SuperInstructor")
+                    b.HasOne("SchoolManagement.Core.Entities.Instructor", "SuperInstructor")
                         .WithMany("SupervisedInstructors")
                         .HasForeignKey("SuperInstructorId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -255,15 +507,15 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("SuperInstructor");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.InstructorSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.InstructorSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Instructor", "Instructor")
+                    b.HasOne("SchoolManagement.Core.Entities.Instructor", "Instructor")
                         .WithMany("Subjects")
                         .HasForeignKey("InsId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Data.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Core.Entities.Subject", "Subject")
                         .WithMany("InstructorSubjects")
                         .HasForeignKey("SubId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -274,9 +526,9 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Student", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Student", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Department", "Department")
+                    b.HasOne("SchoolManagement.Core.Entities.Department", "Department")
                         .WithMany("Students")
                         .HasForeignKey("DID")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -284,15 +536,15 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.StudentSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.StudentSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Student", "Student")
+                    b.HasOne("SchoolManagement.Core.Entities.Student", "Student")
                         .WithMany("Subjects")
                         .HasForeignKey("StudID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Data.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Core.Entities.Subject", "Subject")
                         .WithMany("StudentsSubjects")
                         .HasForeignKey("SubID")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -303,7 +555,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Department", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Department", b =>
                 {
                     b.Navigation("DepartmentSubjects");
 
@@ -312,7 +564,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Instructor", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Instructor", b =>
                 {
                     b.Navigation("ManagedDepatment");
 
@@ -321,12 +573,12 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("SupervisedInstructors");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Student", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Student", b =>
                 {
                     b.Navigation("Subjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Subject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Subject", b =>
                 {
                     b.Navigation("DepartmetsSubjects");
 

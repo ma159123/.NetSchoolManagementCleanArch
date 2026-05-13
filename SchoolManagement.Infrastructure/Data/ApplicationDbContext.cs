@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolManagement.Data.Entities;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using SchoolManagement.Core.Entities;
+using SchoolManagement.Core.Entities.identity;
 using System.Reflection;
 
 namespace SchoolManagement.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
         {
@@ -14,7 +16,7 @@ namespace SchoolManagement.Infrastructure.Data
         {
 
         }
-
+        public DbSet<User> Users { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Student> students { get; set; }
         public DbSet<DepartmetSubject> departmetSubjects { get; set; }

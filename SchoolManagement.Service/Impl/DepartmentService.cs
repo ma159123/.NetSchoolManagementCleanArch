@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolManagement.Data.Entities;
-using SchoolManagement.Infrastructure.Abstract;
-using SchoolManagement.Service.Abstract;
+using SchoolManagement.Core.Abstractions.infra_abstract;
+using SchoolManagement.Core.Abstractions.service_abstract;
+using SchoolManagement.Core.Entities;
 
 namespace SchoolManagement.Service.Impl
 {

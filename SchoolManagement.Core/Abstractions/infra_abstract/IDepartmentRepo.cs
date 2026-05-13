@@ -1,7 +1,6 @@
-﻿using SchoolManagement.Data.Entities;
-using SchoolManagement.Infrastructure.Bases;
+﻿using SchoolManagement.Core.Entities;
 
-namespace SchoolManagement.Infrastructure.Abstract
+namespace SchoolManagement.Core.Abstractions.infra_abstract
 {
     public interface IDepartmentRepo : IGenericRepo<Department>
     {

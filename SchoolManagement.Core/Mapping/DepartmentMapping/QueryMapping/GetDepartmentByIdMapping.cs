@@ -1,5 +1,5 @@
-﻿using SchoolManagement.Core.Features.Departments.Queries.Results;
-using SchoolManagement.Data.Entities;
+﻿using SchoolManagement.Core.Entities;
+using SchoolManagement.Core.Features.Departments.Queries.Results;
 
 namespace SchoolManagement.Core.Mapping.DepartmentMapping
 {

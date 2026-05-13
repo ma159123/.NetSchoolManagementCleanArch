@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolManagement.Data.Entities;
-using SchoolManagement.Infrastructure.Abstract;
+using SchoolManagement.Core.Abstractions.infra_abstract;
+using SchoolManagement.Core.Entities;
 using SchoolManagement.Infrastructure.Bases;
 using SchoolManagement.Infrastructure.Data;
 

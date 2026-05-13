@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\mae56\\source\\repos\\MVC_projects\\Web_API\\SchoolManagement_FullProject\\SchoolManagementCleanArch\\Program.cs"
+    }
+  }
+}

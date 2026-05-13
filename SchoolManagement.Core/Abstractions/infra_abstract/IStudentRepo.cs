@@ -1,5 +1,5 @@
-﻿using SchoolManagement.Data.Entities;
-using SchoolManagement.Infrastructure.Bases;
+﻿using SchoolManagement.Core.Abstractions.infra_abstract;
+using SchoolManagement.Core.Entities;
 
 namespace SchoolManagement.Infrastructure.Abstract
 {

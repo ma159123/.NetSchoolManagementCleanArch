@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
+using SchoolManagement.Core.Abstractions.service_abstract;
 using SchoolManagement.Core.Features.Students.Commands.Models;
 using SchoolManagement.Core.SharedResources;
-using SchoolManagement.Service.Abstract;
 
 namespace SchoolManagement.Core.Features.Students.Commands.Validations
 {

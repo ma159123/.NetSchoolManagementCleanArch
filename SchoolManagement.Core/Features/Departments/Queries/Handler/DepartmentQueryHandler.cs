@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
+using SchoolManagement.Core.Abstractions.service_abstract;
 using SchoolManagement.Core.Bases;
 using SchoolManagement.Core.Features.Departments.Queries.Models;
 using SchoolManagement.Core.Features.Departments.Queries.Results;

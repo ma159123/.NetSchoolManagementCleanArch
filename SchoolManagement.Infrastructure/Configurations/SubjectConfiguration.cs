@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SchoolManagement.Data.Entities;
+using SchoolManagement.Core.Entities;
 
 namespace SchoolManagement.Infrastructure.Configurations
 {

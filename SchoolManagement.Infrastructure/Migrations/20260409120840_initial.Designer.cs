@@ -25,7 +25,7 @@ namespace SchoolManagement.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Department", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Department", b =>
                 {
                     b.Property<int>("DID")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.DepartmetSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.DepartmetSubject", b =>
                 {
                     b.Property<int>("DeptSubID")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("departmetSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Student", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Student", b =>
                 {
                     b.Property<int>("StudID")
                         .ValueGeneratedOnAdd()
@@ -99,7 +99,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("students");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.StudentSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.StudentSubject", b =>
                 {
                     b.Property<int>("StudSubID")
                         .ValueGeneratedOnAdd()
@@ -122,7 +122,7 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("studentSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Subjects", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Subjects", b =>
                 {
                     b.Property<int>("SubID")
                         .ValueGeneratedOnAdd()
@@ -143,15 +143,15 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.ToTable("subjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.DepartmetSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.DepartmetSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Department", "Department")
+                    b.HasOne("SchoolManagement.Core.Entities.Department", "Department")
                         .WithMany("DepartmentSubjects")
                         .HasForeignKey("DID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Data.Entities.Subjects", "Subjects")
+                    b.HasOne("SchoolManagement.Core.Entities.Subjects", "Subjects")
                         .WithMany("DepartmetsSubjects")
                         .HasForeignKey("SubID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -162,24 +162,24 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Subjects");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Student", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Student", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Department", "Department")
+                    b.HasOne("SchoolManagement.Core.Entities.Department", "Department")
                         .WithMany("Students")
                         .HasForeignKey("DID");
 
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.StudentSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.StudentSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Data.Entities.Student", "Student")
+                    b.HasOne("SchoolManagement.Core.Entities.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Data.Entities.Subjects", "Subject")
+                    b.HasOne("SchoolManagement.Core.Entities.Subjects", "Subject")
                         .WithMany("StudentsSubjects")
                         .HasForeignKey("SubID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -190,14 +190,14 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Department", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Department", b =>
                 {
                     b.Navigation("DepartmentSubjects");
 
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Data.Entities.Subjects", b =>
+            modelBuilder.Entity("SchoolManagement.Core.Entities.Subjects", b =>
                 {
                     b.Navigation("DepartmetsSubjects");
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 
-namespace SchoolManagement.Infrastructure.Bases
+namespace SchoolManagement.Core.Abstractions.infra_abstract
 {
     public interface IGenericRepo<T> where T : class
     {

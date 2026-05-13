@@ -2,11 +2,11 @@
 using MediatR;
 using Microsoft.Extensions.Localization;
 using SchoolManagement.Core.Bases;
+using SchoolManagement.Core.Entities;
 using SchoolManagement.Core.Features.Students.Queries.Models;
 using SchoolManagement.Core.Features.Students.Queries.Results;
 using SchoolManagement.Core.SharedResources;
 using SchoolManagement.Core.Wrapper;
-using SchoolManagement.Data.Entities;
 using SchoolManagement.Service.Abstract;
 using System.Linq.Expressions;
 

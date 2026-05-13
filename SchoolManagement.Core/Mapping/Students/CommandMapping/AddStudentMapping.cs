@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Core.Features.Students.Commands.Models;
-using SchoolManagement.Data.Entities;
+using SchoolManagement.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

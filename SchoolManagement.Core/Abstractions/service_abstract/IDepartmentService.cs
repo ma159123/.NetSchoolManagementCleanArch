@@ -1,6 +1,6 @@
-﻿using SchoolManagement.Data.Entities;
+﻿using SchoolManagement.Core.Entities;
 
-namespace SchoolManagement.Service.Abstract
+namespace SchoolManagement.Core.Abstractions.service_abstract
 {
     public interface IDepartmentService
     {

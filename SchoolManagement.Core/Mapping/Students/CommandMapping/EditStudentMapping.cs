@@ -1,5 +1,5 @@
 ﻿using SchoolManagement.Core.Features.Students.Commands.Models;
-using SchoolManagement.Data.Entities;
+using SchoolManagement.Core.Entities;
 
 namespace SchoolManagement.Core.Features.Mapping.StudentMap
 {
