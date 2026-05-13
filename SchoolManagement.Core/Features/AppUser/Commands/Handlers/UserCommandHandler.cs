@@ -9,12 +9,13 @@ using SchoolManagement.Core.SharedResources;
 
 namespace SchoolManagement.Core.Features.AppUser.Commands.Handlers
 {
-    public class AddUserCommandHandler : ResponseHandler, IRequestHandler<AddUserCommand, Response<string>>
+    public class UserCommandHandler : ResponseHandler, IRequestHandler<AddUserCommand, Response<string>>,
+                                                       IRequestHandler<UpdateUserCommand, Response<string>>
     {
         private readonly UserManager<User> _userManager;
         public readonly IMapper _mapper;
         private readonly IStringLocalizer<SharedResourcesClass> _stringLocalizer;
-        public AddUserCommandHandler(UserManager<User> userManager, IMapper mapper, IStringLocalizer<SharedResourcesClass> stringLocalizer) : base(stringLocalizer)
+        public UserCommandHandler(UserManager<User> userManager, IMapper mapper, IStringLocalizer<SharedResourcesClass> stringLocalizer) : base(stringLocalizer)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -44,6 +45,35 @@ namespace SchoolManagement.Core.Features.AppUser.Commands.Handlers
             }
             //return created
             return Created("User Created!");
+        }
+
+        public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+            //check if exist
+            var user = await _userManager.FindByIdAsync(request.Id);
+            if (user == null)
+            {
+                return NotFound<string>(_stringLocalizer[SharedResourceKeys.NotFound]);
+            }
+
+            //mapping
+            _mapper.Map(request, user);
+
+            // ⭐ Debug: Check after mapping
+            Console.WriteLine($"After Map: FullName={user.FullName}, Address={user.Address}");
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                string errorResult = "Error: ";
+                foreach (var error in result.Errors)
+                {
+                    errorResult += $"{error.Description}, ";
+                }
+                return BadRequest<string>(errorResult);
+            }
+            //return created
+            return Created("User Updated!");
         }
     }
 }
