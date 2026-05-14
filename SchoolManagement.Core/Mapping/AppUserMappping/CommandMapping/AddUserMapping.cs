@@ -8,7 +8,7 @@ namespace SchoolManagement.Core.Mapping.AppUserMappping
         public void AddUserMapping()
         {
             CreateMap<AddUserCommand, User>()
-                   .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
+                   .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
                    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
                    .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
                    .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));

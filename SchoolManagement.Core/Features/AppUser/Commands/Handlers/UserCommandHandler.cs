@@ -35,7 +35,7 @@ namespace SchoolManagement.Core.Features.AppUser.Commands.Handlers
 
             //mapping
             var mappedUser = _mapper.Map<User>(request);
-            var result = await _userManager.CreateAsync(mappedUser);
+            var result = await _userManager.CreateAsync(mappedUser, request.Password);
             if (!result.Succeeded)
             {
                 string errorResult = "Error: ";
