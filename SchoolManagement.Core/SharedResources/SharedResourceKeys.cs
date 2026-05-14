@@ -6,5 +6,7 @@
         public static string Required = "Required";
         public static string FillAllFields = "FillAllFields";
         public static string Deleted = "Deleted";
+        public static string InCorrectPassword = "InCorrectPassword";
+
     }
 }

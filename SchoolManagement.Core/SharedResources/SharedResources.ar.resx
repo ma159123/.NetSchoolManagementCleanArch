@@ -123,6 +123,9 @@
   <data name="FillAllFields" xml:space="preserve">
     <value>املا جميع الحقول</value>
   </data>
+  <data name="InCorrectPassword" xml:space="preserve">
+    <value>الباسورد الحالي غير صحيح</value>
+  </data>
   <data name="NotFound" xml:space="preserve">
     <value>غير متوفر</value>
   </data>
