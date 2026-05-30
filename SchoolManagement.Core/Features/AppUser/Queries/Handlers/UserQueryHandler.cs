@@ -33,7 +33,7 @@ namespace SchoolManagement.Core.Features.AppUser.Queries.Handlers
             //mapping
             var mappedUser = await _mapper.ProjectTo<GetUserResponse>(users).ToPaginatedListAsync(request.PageIndex, request.PageSize);
 
-            //return created
+            //return 
             return Success(mappedUser);
         }
 

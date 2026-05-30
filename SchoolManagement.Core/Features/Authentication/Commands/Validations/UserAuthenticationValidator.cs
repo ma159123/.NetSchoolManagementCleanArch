@@ -5,10 +5,10 @@ using SchoolManagement.Core.SharedResources;
 
 namespace SchoolManagement.Core.Features.Authentication.Commands.Validations
 {
-    public class UserAuthenticationValidator : AbstractValidator<UserAuthenticationCommand>
+    public class AddRoleValidator : AbstractValidator<UserAuthCommand>
     {
         private readonly IStringLocalizer<SharedResourcesClass> _localizer;
-        public UserAuthenticationValidator(IStringLocalizer<SharedResourcesClass> localizer)
+        public AddRoleValidator(IStringLocalizer<SharedResourcesClass> localizer)
         {
             _localizer = localizer;
             ApplyValidationRules();

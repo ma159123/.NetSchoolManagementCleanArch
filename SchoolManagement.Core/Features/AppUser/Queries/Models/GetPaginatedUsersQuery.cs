@@ -10,6 +10,11 @@ namespace SchoolManagement.Core.Features.AppUser.Queries.Models
 
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
+        public GetPaginatedUsersQuery(int pageIndex, int pagesize)
+        {
+            this.PageIndex = pageIndex;
+            this.PageSize = pagesize;
+        }
 
     }
 }
